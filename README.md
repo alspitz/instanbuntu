@@ -8,7 +8,7 @@ Additionally, this allows you to have N different Ubuntu installations of variou
 
 The only dependencies on the host system are the programs debootstrap and schroot.
 
-This is known to work with ROS Kinetic and Ubuntu Xenial (see below) but others flavors are supported by changing the appropriate names at the top of the script.
+This is known to work with Ubuntu 14.04 (ROS Indigo), Ubuntu 16.04 (ROS Kinetic), Ubuntu 18.04 (ROS Bionic), and Ubuntu 20.04 (ROS Noetic) (see below), but others flavors are supported by changing the appropriate names at the top of the script.
 While running, you will need to provide your password for sudo access.
 The script is designed so that it can be re-run upon failure, but some harmful edge cases may be possible.
 When in doubt, you can consult the script to continue manual installation upon a failure.
@@ -18,10 +18,11 @@ If you do experience a failure, please feel free to file an issue or submit a pu
 
 | Ubuntu Flavor | ROS Flavor |
 | -----         | -----  |
-| Trusty | Indigo |
-| Xenial | Kinetic |
-| Zesty | Lunar |
-| Bionic | Melodic |
+| Trusty (14.04) | Indigo |
+| Xenial (16.04) | Kinetic |
+| Zesty (17.04) | Lunar |
+| Bionic (18.04) | Melodic |
+| Focal (20.04) | Noetic |
 
 # Known Limitations
 

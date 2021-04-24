@@ -12,8 +12,8 @@
 # - a couple GB of disk space
 ###############################################################################
 
-flavor=bionic
-ros_flavor=melodic
+flavor=focal
+ros_flavor=noetic
 arch=amd64
 
 set -e
@@ -81,12 +81,21 @@ sudo apt-get install gnupg -y || true
 grep \\\"${sources_add}\\\" /etc/apt/sources.list > /dev/null || sudo sed -i '\\\$s/\\\$/${sources_add}/' /etc/apt/sources.list
 
 sudo sh -c 'echo \\\"deb http://packages.ros.org/ros/ubuntu \\\$(lsb_release -sc) main\\\" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo -E apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 sudo apt-get update
 sudo apt-get install vim build-essential git -y
 sudo apt-get install ros-${ros_flavor}-ros-base ros-${ros_flavor}-tf2-ros -y
-sudo apt-get install python-catkin-tools python-wstool -y
+if [[ "$ros_flavor" == "noetic" ]]; then
+  sudo apt-get install python3-wstool -y
+  sudo apt-get install python3-catkin-tools -y
+  sudo apt-get install python3-osrf-pycommon -y
+  sudo apt-get install python3-rosdep
+else
+  sudo apt-get install python-wstool -y
+  sudo apt-get install python-catkin-tools -y
+  sudo apt-get install python-rosdep
+fi
 
 sudo rosdep init || true
 rosdep update
