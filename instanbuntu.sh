@@ -20,6 +20,11 @@ set -e
 set -u
 set -o pipefail
 
+if ! command -v schroot &> /dev/null; then
+  echo "schroot is a dependency. Please install and re-run (e.g. sudo apt install schroot)"
+  exit 1
+fi
+
 chroot_name="${flavor}-insta"
 
 chroot_dir="$(pwd)/${flavor}"
