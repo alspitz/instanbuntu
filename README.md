@@ -33,6 +33,12 @@ Using an End of Life Ubuntu flavor, such as Zesty, requires changing the deboost
 
 In order to run 3D accelerated programs such as rviz, additional graphics drivers such as nvidia-384 need to be installed manually.
 
+# Troubleshooting
+
+## chown: invalid group: 'root:staff' when using apt.
+
+Run `sudo groupadd staff` from inside the chroot.
+
 # Tips
 
 For easy opening of a terminal, set up a keyboard shortcut to directly open a terminal inside the chroot.
