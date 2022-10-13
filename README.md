@@ -39,6 +39,10 @@ In order to run 3D accelerated programs such as rviz, additional graphics driver
 
 Run `sudo groupadd staff` from inside the chroot.
 
+## cannot stat /etc/networks: No such file or directory
+
+Comment out "networks" in `/etc/schroot/default/nssdatabases` ([https://bbs.archlinux.org/viewtopic.php?id=100039](https://bbs.archlinux.org/viewtopic.php?id=100039))
+
 # Tips
 
 For easy opening of a terminal, set up a keyboard shortcut to directly open a terminal inside the chroot.
