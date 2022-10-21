@@ -39,9 +39,16 @@ In order to run 3D accelerated programs such as rviz, additional graphics driver
 
 Run `sudo groupadd staff` from inside the chroot.
 
+You may also need to create other groups as needed when installing certain packages.
+
 ## cannot stat /etc/networks: No such file or directory
 
 Comment out "networks" in `/etc/schroot/default/nssdatabases` ([https://bbs.archlinux.org/viewtopic.php?id=100039](https://bbs.archlinux.org/viewtopic.php?id=100039))
+
+## Bind mount /dev/shm
+
+It's a good idea to uncomment the `/dev/shm` line in `/etc/schroot/default/fstab`.
+Many programs can subtly fail if they don't have access to `/dev/shm`.
 
 # Tips
 
