@@ -14,6 +14,32 @@ The script is designed so that it can be re-run upon failure, but some harmful e
 When in doubt, you can consult the script to continue manual installation upon a failure.
 If you do experience a failure, please feel free to file an issue or submit a pull request.
 
+# Usage
+
+* Make sure you have the dependencies: `debootstrap` and `schroot`.
+* Run instanbuntu.sh from a folder where you wish to store the Ubuntu installation.
+* If successful, you should be able to enter the chroot using `schroot` or `schroot -c <ubuntu flavor>-insta`.
+
+# How does this compare to Docker?
+
+Docker is a widely used container system that is a bit heaver and provides more containerization than just the chroot used by `schroot`. Instanbuntu can be a good docker alternative if you want something a bit more lightweight and don't want all the bells and whistles that docker comes with, such as image versioning, image layers, the Dockerfile specification, etc.
+
+Instanbuntu essentially just changes the root of the file system to a subfolder containing a separate Ubuntu installation.
+
+See below for some discussions on chroot vs Docker:
+
+* https://stackoverflow.com/questions/46450341/chroot-vs-docker
+* https://devops.stackexchange.com/questions/2826/difference-between-chroot-and-docker
+
+Docker is far more popular than chroot-based methods however, and there is a lot more documentation and help on the internet for Docker.
+Please be warned that this script just sets up a chroot with Ubuntu and ROS and provides no further tools for managing the container.
+You may have to run administrative commands inside the chroot to set up the system however you like.
+
+Note that unlike Docker, there is no concept of "starting" or "stopping" the container, and any changes you make will persist.
+This may be an advantage or disadvantage, depending on your needs.
+Running `schroot` enters the chroot and commands run from that terminal will run inside that chroot's Ubuntu installation.
+For example, if you run a command inside the chroot that "messes up" the chroot, you can't easily undo it (although you can certainly remove the entire container by `rm`ing the folder and then reinstall it without affecting the host system).
+
 # Tested Configurations
 
 | Ubuntu Flavor | ROS Flavor |
