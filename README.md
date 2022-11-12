@@ -59,6 +59,8 @@ Using an End of Life Ubuntu flavor, such as Zesty, requires changing the deboost
 
 In order to run 3D accelerated programs such as rviz, additional graphics drivers such as nvidia-384 need to be installed manually.
 
+For example, to install `nvidia-driver-520` in the Ubuntu 20.04 chroot, you will need to unable the "restricted" area of the updates repository by adding the appropriate line to `/etc/apt/sources.list`.
+
 # Troubleshooting
 
 ## chown: invalid group: 'root:staff' when using apt.
