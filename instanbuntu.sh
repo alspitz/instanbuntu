@@ -52,7 +52,7 @@ root-users=${USER}
 root-groups=${USER}
 aliases=default"
 
-sources_add=" universe multiverse"
+sources_add=" universe multiverse restricted"
 
 bashrc_check="
 if [ \\\\\\\${SCHROOT_USER} ]; then
