@@ -2,8 +2,11 @@
 
 ###############################################################################
 # Usage:
-#   ./instanbuntu.sh will generate a folder in the CWD named ${flavor} that
+#   ./instanbuntu.sh will generate a folder in the CWD named ${flavor}-insta that
 #   contains the Ubuntu system.
+#   Can optionally name the chroot using ./instanbuntu.sh NAME.
+#   Set ${flavor} and ${ros_flavor} appropriately.
+#   See README.md for tested configurations.
 #
 # Dependencies:
 # - debootstrap
@@ -26,8 +29,13 @@ if ! command -v schroot &> /dev/null; then
 fi
 
 chroot_name="${flavor}-insta"
+if [ ! $# -eq 0 ]; then
+  chroot_name="$1"
+fi
 
-chroot_dir="$(pwd)/${flavor}"
+echo "Using chroot_name: ${chroot_name}"
+
+chroot_dir="$(pwd)/${chroot_name}"
 
 if [ -e "${chroot_dir}" ]; then
   echo "WARNING: \"${chroot_dir}\" already exists."
@@ -39,7 +47,7 @@ if [ -e "${chroot_dir}" ]; then
   read
 else
   mkdir -p "${chroot_dir}"
-  sudo debootstrap --arch="${arch}" "${flavor}" "${flavor}"/ http://archive.ubuntu.com/ubuntu
+  sudo debootstrap --arch="${arch}" "${flavor}" "${chroot_dir}"/ http://archive.ubuntu.com/ubuntu
 fi
 
 schroot_conf_entry="

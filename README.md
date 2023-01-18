@@ -20,6 +20,15 @@ If you do experience a failure, please feel free to file an issue or submit a pu
 * Run instanbuntu.sh from a folder where you wish to store the Ubuntu installation.
 * If successful, you should be able to enter the chroot using `schroot` or `schroot -c <ubuntu flavor>-insta`.
 
+Example:
+
+```
+git clone https://github.com/alspitz/instanbuntu ~/instanbuntu/
+mkdir ~/chroots
+cd ~/chroots
+../instanbuntu/instanbuntu.sh
+```
+
 # How does this compare to Docker?
 
 Docker is a widely used container system that is a bit heaver and provides more containerization than just the chroot used by `schroot`. Instanbuntu can be a good docker alternative if you want something a bit more lightweight and don't want all the bells and whistles that docker comes with, such as image versioning, image layers, the Dockerfile specification, etc.
