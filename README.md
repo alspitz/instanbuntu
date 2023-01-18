@@ -84,7 +84,7 @@ Comment out "networks" in `/etc/schroot/default/nssdatabases` ([https://bbs.arch
 
 ## Bind mount /dev/shm
 
-It's a good idea to uncomment the `/dev/shm` line in `/etc/schroot/default/fstab`.
+It's a good idea to uncomment the `/dev/shm` line in `/etc/schroot/default/fstab`, especially if you get any strange "Permission Denied" errors.
 Many programs can subtly fail if they don't have access to `/dev/shm`.
 
 # Tips
