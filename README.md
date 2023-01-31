@@ -68,7 +68,11 @@ Using an End of Life Ubuntu flavor, such as Zesty, requires changing the deboost
 
 In order to run 3D accelerated programs such as rviz, additional graphics drivers such as nvidia-384 need to be installed manually.
 
-For example, to install `nvidia-driver-520` in the Ubuntu 20.04 chroot, you will need to unable the "restricted" area of the updates repository by adding the appropriate line to `/etc/apt/sources.list`.
+For example, to install the appropriate NVIDIA drivers in the Ubuntu 20.04 chroot, you will need to visit the [Cuda toolkit archives](https://developer.nvidia.com/cuda-toolkit-archive) and follow the instructions for the **Cuda version running on the host system**.
+For example, if your host system is running nvidia driver version 520.61.05, cuda version 11.8, you will need to install that exact version in the chroot (for the Ubuntu version of the chroot).
+You can obtain the version in use on the host system by running `nvidia-smi`.
+Running `nvidia-smi` in the chroot should display the same information.
+If you get an error message reading "Failed to initialize NVML: Driver/library version mismatch", then you likely have the wrong version of the drivers installed in the chroot.
 
 # Troubleshooting
 
